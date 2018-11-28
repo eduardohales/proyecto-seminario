@@ -1,6 +1,9 @@
 #include <string>
 #include <sstream>
 #include <math.h>
+#include "Event.h"
+#include "Scheduler.h"
+#include "Grafo.h"
 
 class Simulador{
 
@@ -10,16 +13,16 @@ public:
     //destructor
     ~Simulador();
     //metodos
-    //void inicializar();
-    //void arribo(Evento *p);
-    //void salida(Evento *p);
+    void init();
+    void arribo(Event *ev);
+    void salida(Event *ev);
     //void generaAS(int tipo, float tasaMedia, float tiempo_actual, int source,
     //         int dest, int hops, int * path);
     // void sumaCanal(Evento);
     // void restaCanal();
     // void isfreeRoute();
-    //void calculaTiempo();
-    //void run();//metodo para correr el simulador
+    float tiempoAleatorio();
+    void run();//metodo para correr el simulador
 
     void setllegadasTot(int llegadasTot);
     void setMU(double MU);
@@ -44,6 +47,8 @@ private:
     int blocked;
     int llegadasExe;
     int llegadasTot;
+    int canalesLibres;
+    int *seed;//Arreglo de semillas lcgrand/user
 
     double MU;
     double LAMBDA;
@@ -55,9 +60,9 @@ private:
     float * cnxBlocked;
     float * cnxLlegadas;
     float * cnxEject;
-    int canalesLibres;
     float probBloq;
     float * probUser;
-
-    //Grafo3 grafo;
+    
+    Grafo *grafo;
+    Scheduler *scheduler;
 };

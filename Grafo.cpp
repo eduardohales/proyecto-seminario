@@ -17,7 +17,7 @@ void Grafo::loadNetwork(int fileNumber) {
     std::ifstream netFile;
     switch (fileNumber) {
         case 0:
-            netFile.open("../EuroCore.rut");
+            netFile.open("./EuroCore.rut");
             Capacity = 8;
             std::cout << "--- EuroCore.rut ---" << std::endl;
             break;

@@ -12,10 +12,11 @@ float Event::getTiempo() {
     return time;
 }
 
-Event::Event(int type, float time, int source, int dest, int hops) {
+Event::Event(int type, float time, int source, int dest, int hops, std::vector<int> path) {
     this->type = type;
     this->time = time;
     this->source = source;
     this->dest = dest;
     this->hops = hops;
+    //this->path = NULL;
 }

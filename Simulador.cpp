@@ -1,4 +1,5 @@
 #include "Simulador.h"
+#include "lcgrand.h"
 
 Simulador::Simulador(){
     this->blocked = 0;
@@ -10,12 +11,14 @@ Simulador::Simulador(){
     this->ton=0;
     this->toff = 0;
     this->cargaTrafico = 0;
+    this->canalesLibres = 0;
+    this->probBloq = 0;
     this->cnxBlocked = NULL;
     this->cnxLlegadas = NULL;
     this->cnxEject = NULL;
-    this->canalesLibres = 0;
-    this->probBloq = 0;
     this->probUser = NULL;
+    this->seed = NULL;
+    this->scheduler = NULL;
 }
 Simulador::~Simulador(){}
 //metodos
@@ -52,8 +55,6 @@ float Simulador::getProbBloq(){
 float * Simulador::getProbUser(){
     return this->probUser;
 }
-
-
 void Simulador::setllegadasTot(int llegadasTot){
     this->llegadasTot = llegadasTot;
 }
@@ -73,6 +74,50 @@ void Simulador::setcargaTrafico(double cargaTrafico){
     this->cargaTrafico = cargaTrafico;
 }
 
+/*void Simulador::init(){
+
+    //this->canalesLibres = malloc(sizeof(int)*grafo.getLinks());
+   // this->seed = malloc(sizeof(int)*(grafo.getUser()*2));
+    this->probBloq = 0;
+    //this->cnxBlocked = NULL;
+    //this->cnxLlegadas = NULL;
+    //this->cnxEject = NULL;
+    //this->probUser = NULL;
+}
+void Simulador::run(){
+    free(popEvent);
+}
+void Simulador::arribo(Event *ev){
+   /* int newType;
+    float currentTime, newTime;
+    newType = (ev->type)-grafo.getUser();
+    currentTime = ev->tiempo;
+    newTime = currentTime + tiempoAleatorio(newType, this->MU);
+
+    if (isfreeRoute())
+    {
+        /* code */
+    /*}
+    else{
+
+    }*/
+//}
+/*void Simulador::salida(Event *ev){
+    int newType;
+    float currentTime, newTime;
+    newType = (ev->type)-grafo.getUser();
+    currentTime = ev->tiempo;
+    newTime = currentTime + tiempoAleatorio(newType, this->LAMBDAPRIMA);
+    scheduler.pushEvento(new Event(newType,newTime, ev->source, ev->dest, ev->hops, ev->path));
+    //sumarCanal();
+}
+float Simulador::tiempoAleatorio(int tipo, float tasaMedia){
+    float time, unif;
+    unif = lcgrand((this->seed)+tipo);
+    time = (-1)*(log(1-unif))/tasaMedia;
+
+    return time;
+}*/
 
 
 

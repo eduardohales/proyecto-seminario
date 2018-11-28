@@ -1,6 +1,6 @@
 #ifndef PROYECTOSEMINARIO_EVENT_H
 #define PROYECTOSEMINARIO_EVENT_H
-
+#include <vector>
 
 class Event {
 private:
@@ -9,10 +9,10 @@ private:
     int source;
     int dest;
     int hops;
-    int *path;
+    std::vector<int> path;
 public:
     Event();
-    Event(int type, float time, int source, int dest, int hops);
+    Event(int type, float time, int source, int dest, int hops, std::vector<int>path);
     float getTiempo();
 };
 
