@@ -18,5 +18,16 @@ Event::Event(int type, float time, int source, int dest, int hops, std::vector<i
     this->source = source;
     this->dest = dest;
     this->hops = hops;
-    //this->path = NULL;
+    this->path = path;
+}
+
+void Event::printEvent(){
+    std::cout << "--- Evento ---" << std::endl;
+
+    std::cout << "(" << type <<","<<time<<","<<source<<","<<dest<<","<<hops<<",";
+    for (int i = 0; i < path.size(); ++i)
+    {
+        std::cout << path[i] << ' ';
+    }
+    std::cout<<")"<< std::endl;
 }

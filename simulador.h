@@ -3,17 +3,23 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 #include <math.h>
+#include "Grafo.h"
+#include "Scheduler.h"
+#include "Event.h"
 
 class Simulador{
 
 public:
 	//prototipos constructores
 	Simulador();
+	Simulador(double MU, double LAMBDA, double LAMBDAPRIMA, double ton, double toff, double cargaTrafico);
     //destructor
     ~Simulador();
     //metodos
-    //void inicializar();
+    void init(Grafo &grafo);
+    float tiempoAleatorio(int tipo, float tasaMedia);
     //void arribo(Evento *p);
     //void salida(Evento *p);
     //void generaAS(int tipo, float tasaMedia, float tiempo_actual, int source,
@@ -47,7 +53,7 @@ private:
     int blocked;
     int llegadasExe;
     int llegadasTot;
-
+    int * seed;
     double MU;
     double LAMBDA;
     double LAMBDAPRIMA;
@@ -58,10 +64,11 @@ private:
     float * cnxBlocked;
     float * cnxLlegadas;
     float * cnxEject;
-    int canalesLibres;
+    int *canalesLibres;
     float probBloq;
     float * probUser;
 
-   // Grafo grafo;
+    Grafo grafo;
+    Scheduler scheduler;
 };
 #endif

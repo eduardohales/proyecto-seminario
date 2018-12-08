@@ -5,7 +5,10 @@
 #include <vector>
 
 class Grafo {
-private:
+//private:
+    
+public:
+    
     int Nodes;                                  // Cant. Nodos de la red. Se extraen del archivo.
     int Links;                                  // Cant. Enlaces de la red. Se extraen del archivo.
     int Users;                                  // Cant. usuarios de la red =  nodos * (nodos - 1)
@@ -16,8 +19,6 @@ private:
     int datosRed[3];
     int COUNTLCG[101];
 
-
-public:
     Grafo();
     void loadNetwork(int fileNumber);
     void getDataFromNetwork(std::ifstream &netFile);

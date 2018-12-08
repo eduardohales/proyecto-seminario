@@ -9,7 +9,7 @@ Grafo::Grafo() {
     Nodes = 0;
     Links = 0;
     MaxHops = 0;
-    Capacity = 0;
+    Capacity = 1;
 }
 
 // Carga la informacion de la red a partir del archivo de entrada.
