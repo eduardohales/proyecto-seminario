@@ -1,18 +1,19 @@
 #ifndef PROYECTOSEMINARIO_SCHEDULER_H
 #define PROYECTOSEMINARIO_SCHEDULER_H
 
-#include "Event.h"
+#include "Evento.h"
 #include <list>
 #include <vector>
 
 class Scheduler {
 private:
-    std::vector<Event> scheduler;
+    std::vector<Evento> scheduler;
 public:
-    void pushEvento(Event newEvent);
-    Event popEvent();
+    void pushEvento(Evento newEvent);
+    Evento popEvento();
     void freeScheduler();
     void print();
+    bool isEmpty();
 };
 
 
