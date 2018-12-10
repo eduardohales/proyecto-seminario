@@ -5,11 +5,11 @@
 
 
 Grafo::Grafo() {
-    Users = 0;
-    Nodes = 0;
-    Links = 0;
-    MaxHops = 0;
-    Capacity = 1;
+    usuarios = 0;
+    nodos = 0;
+    enlaces = 0;
+    maxHops = 0;
+    capacity = 0;
 }
 
 // Carga la informacion de la red a partir del archivo de entrada.
@@ -17,33 +17,33 @@ void Grafo::loadNetwork(int fileNumber) {
     std::ifstream netFile;
     switch (fileNumber) {
         case 0:
-            netFile.open("./EuroCore.rut");
-            Capacity = 8;
+            netFile.open("../EuroCore.rut");
+            capacity = 8;
             std::cout << "--- EuroCore.rut ---" << std::endl;
             break;
         case 1:
             netFile.open("../EON.rut");
-            Capacity = 20;
+            capacity = 20;
             std::cout << "--- EON.rut ---" << std::endl;
             break;
         case 2:
             netFile.open("../ArpaNet.rut");
-            Capacity = 25;
+            capacity = 25;
             std::cout << "--- ArpaNet.rut ---" << std::endl;
             break;
         case 3:
             netFile.open("../EuroLarge.rut");
-            Capacity = 47;
+            capacity = 47;
             std::cout << "--- EuroLarge.rut ---" << std::endl;
             break;
         case 4:
             netFile.open("../NSFNet.rut");
-            Capacity = 15;
+            capacity = 15;
             std::cout << "--- NSFNet.rut ---" << std::endl;
             break;
         default:
             netFile.open("UKNet.rut");
-            Capacity = 21;
+            capacity = 21;
             std::cout << "--- UKNet.rut ---" << std::endl;
             break;
     }
@@ -58,6 +58,7 @@ void Grafo::loadNetwork(int fileNumber) {
 // Lee las primeras 3 lineas del archivo y las almacena en el arreglo datosRed[]
 void Grafo::getDataFromNetwork(std::ifstream &netFile) {
     std::string line;
+    int datosRed[3];
 
     if (netFile.is_open()) {
         for (int i = 0; i < 3; i++) {
@@ -76,9 +77,9 @@ void Grafo::getDataFromNetwork(std::ifstream &netFile) {
             }
         }
     }
-    Nodes = datosRed[1];
-    Users = Nodes * (Nodes - 1);
-    Links = datosRed[2];
+    nodos = datosRed[1];
+    usuarios = nodos * (nodos - 1);
+    enlaces = datosRed[2];
 }
 
 void Grafo::getRouteAndPathFromNetwork(std::ifstream &netFile) {
@@ -118,9 +119,9 @@ void Grafo::getRouteAndPathFromNetwork(std::ifstream &netFile) {
 }
 
 void Grafo::printData() {
-    std::cout << "Users: " << std::to_string(Users) << std::endl;
-    std::cout << "Nodes: " << std::to_string(Nodes) << std::endl;
-    std::cout << "Links: " << std::to_string(Links) << std::endl;
+    std::cout << "Usuarios: " << std::to_string(usuarios) << std::endl;
+    std::cout << "Nodos: " << std::to_string(nodos) << std::endl;
+    std::cout << "Enlaces: " << std::to_string(enlaces) << std::endl;
 }
 
 void Grafo::printRoute() {
@@ -150,3 +151,49 @@ void Grafo::printPath() {
     }
 }
 
+Grafo::~Grafo() {
+    for (int i = 0; i < dataRoute.size(); i++) {
+        dataRoute[i].clear();
+    }
+    for (int i = 0; i < pathRoute.size(); i++) {
+        pathRoute[i].clear();
+    }
+    dataRoute.clear();
+    pathRoute.clear();
+}
+
+void Grafo::setMaxHops(int maxHops) {
+    this->maxHops = maxHops;
+}
+
+int Grafo::getUsuarios() const {
+    return this->usuarios;
+}
+
+int Grafo::getNodos() const {
+    return this->nodos;
+}
+
+int Grafo::getDataRoute(int row, int col) const {
+    return this->dataRoute[col][row];
+}
+
+int Grafo::getMaxHops() const {
+    return this->maxHops;
+}
+
+const std::vector<int> &Grafo::getpathRoute(int row) const {
+    return this->pathRoute[row];
+}
+
+int Grafo::getCapacity() const {
+    return capacity;
+}
+
+void Grafo::setCapacity(int cap) {
+    this->capacity = cap;
+}
+
+int Grafo::getEnlaces() const {
+    return this->enlaces;
+}
