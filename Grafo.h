@@ -16,6 +16,7 @@ private:
 public:
     Grafo();
     void loadNetwork(int fileNumber);
+    void loadNetwork(std::string path);
     void getDataFromNetwork(std::ifstream &netFile);
     void getRouteAndPathFromNetwork(std::ifstream &netFile);
     void printData();

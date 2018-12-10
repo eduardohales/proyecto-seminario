@@ -76,6 +76,7 @@ double Simulador::calcularTiempo(int tipo, double tasaMedia) {
     return tiempo;
 }
 
+
 Simulador::~Simulador() {
     delete[] cnxBloqueo;
     delete[] cnxEjecutada;
@@ -86,6 +87,7 @@ Simulador::~Simulador() {
     delete scheduler;
     std::cout << "Simulador terminado" << std::endl;
 }
+
 
 double Simulador::getProbBloqueo() {
     return this->probBloqueo;
@@ -181,7 +183,7 @@ void Simulador::start() {
 
         std::cout << canalesLibres[0] << ";";
 
-        while (llegdasTotales < pow(10, 5)) {
+        while (llegdasTotales < pow(10, 3)) {
             Evento p = scheduler->popEvento();
             if (p.getType() < grafo->getUsuarios())
                 Arribo(p);
@@ -193,12 +195,15 @@ void Simulador::start() {
         std::cout << usuariosBloqueados << ";";
         grafo->setCapacity(grafo->getCapacity() - 1);
         scheduler->freeScheduler();
+
         if (probBloqueo  <= 0.001)
             free();
+
     }
     calcularProbUsuario();
     probBloqueo = 0.0;
 }
+
 
 void Simulador::free() {
     delete[] cnxBloqueo;
@@ -208,3 +213,4 @@ void Simulador::free() {
     delete[] countLCG;
     delete[] prob_user;
 }
+

@@ -12,12 +12,22 @@ Grafo::Grafo() {
     capacity = 0;
 }
 
+void Grafo::loadNetwork(std::string path) {
+    std::ifstream netFile;
+    netFile.open(path);
+    capacity = 8;
+    getDataFromNetwork(netFile);
+    getRouteAndPathFromNetwork(netFile);
+
+    netFile.close();
+}
+
 // Carga la informacion de la red a partir del archivo de entrada.
 void Grafo::loadNetwork(int fileNumber) {
     std::ifstream netFile;
     switch (fileNumber) {
         case 0:
-            netFile.open("../EuroCore.rut");
+            netFile.open("./EuroCore.rut");
             capacity = 8;
             std::cout << "--- EuroCore.rut ---" << std::endl;
             break;

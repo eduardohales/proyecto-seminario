@@ -1,17 +1,15 @@
-#include <iostream>
+#include "mainwindow.h"
+#include <QApplication>
 #include "Grafo.h"
 #include "Simulador.h"
 #include "Scheduler.h"
-#include <math.h>
 
-int main() {
-    Grafo grafo;
-    grafo.loadNetwork(0);
-    grafo.printRoute();
+int main(int argc, char *argv[])
+{
 
-    Simulador simulador;
-    simulador.setGrafo(&grafo);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
-    simulador.start();
-    return 0;
+   return a.exec();
 }
