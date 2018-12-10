@@ -28,7 +28,7 @@ void Simulador::init() {
     this->llegdasTotales = 0;
     this->grafo->setMaxHops(0);
 
-    this->cnxBloqueo = new double[this->grafo->getUsuarios()]{1};
+    this->cnxBloqueo = new double[this->grafo->getUsuarios()];
     this->cnxLlegada = new double[this->grafo->getUsuarios()];
     this->cnxEjecutada = new double[this->grafo->getUsuarios()];
 
