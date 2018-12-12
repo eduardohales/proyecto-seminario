@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>260</y>
+      <y>290</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -124,6 +124,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>300</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="CargaTraficoLine">
     <property name="geometry">
@@ -133,6 +136,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>0.3</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="TasaSalidaLine">
@@ -144,6 +150,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>1000</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="ToffLine">
     <property name="geometry">
@@ -153,6 +162,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>0.0023</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="TonLine">
@@ -164,18 +176,47 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>0.001</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="setVariablesButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>220</y>
+      <y>250</y>
       <width>221</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Set Variables</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="iteracionesLine">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>210</y>
+      <width>113</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="iteracionesLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nº Iteraciones</string>
     </property>
    </widget>
   </widget>

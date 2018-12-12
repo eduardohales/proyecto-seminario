@@ -26,6 +26,7 @@ void MainWindow::on_startSimulationButton_clicked()
     grafo.printRoute();
     Simulador simulador;
     simulador.setGrafo(&grafo);
+    simulador.setIteraciones(this->iteraciones);
     simulador.start();
 }
 
@@ -46,7 +47,7 @@ void MainWindow::on_setVariablesButton_clicked()
     QString cargaTrafico = ui->CargaTraficoLine->text();
     QString Ton = ui->TonLine->text();
     QString Toff = ui->ToffLine->text();
-
+    this->iteraciones = ui->iteracionesLine->text().toInt();
 
     std::cout << "tasa arribo: " << tasaArribo.toDouble() << std::endl;
     std::cout << "tasa salida: " << tasaSalida.toDouble() << std::endl;

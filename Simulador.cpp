@@ -12,6 +12,7 @@ Simulador::Simulador() {
     LAMBDA = 1.0 / (Ton + Toff);
     LAMBDAPRIMA = 1.0 / Toff;
     scheduler = new Scheduler();
+    iteraciones = 5;
 }
 
 // Setea el grafo en el simulador.
@@ -155,7 +156,7 @@ void Simulador::sumaCanal(Evento evento) {
 }
 
 void Simulador::calcularProbUsuario() {
-    std::cout << "probuser;";
+    //std::cout << "probuser;";
     for (int i = 1; i <= grafo->getMaxHops(); i++) {
         int k = 0;
         int w = 0;
@@ -171,7 +172,8 @@ void Simulador::calcularProbUsuario() {
             }
         }
         prob_user[i - 1] = (prob_user[i - 1] / (double) k);
-        std::cout << prob_user[i - 1] << ";";
+        std::cout << "Probabilidad de Usuario para " << i << " salto(s): "  << prob_user[i - 1] << std::endl;
+        //std::cout << prob_user[i - 1] << ";";
     }
 
 }
@@ -183,7 +185,7 @@ void Simulador::start() {
 
         std::cout << canalesLibres[0] << ";";
 
-        while (llegdasTotales < pow(10, 3)) {
+        while (llegdasTotales < pow(10, this->iteraciones)) {
             Evento p = scheduler->popEvento();
             if (p.getType() < grafo->getUsuarios())
                 Arribo(p);
@@ -214,3 +216,6 @@ void Simulador::free() {
     delete[] prob_user;
 }
 
+void Simulador::setIteraciones(int it) {
+    this->iteraciones = it;
+}

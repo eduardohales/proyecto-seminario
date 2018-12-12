@@ -28,6 +28,8 @@ private:
     int *countLCG;
     int *seed;
 
+    int iteraciones;
+
 
 public:
     Grafo *grafo;
@@ -53,6 +55,7 @@ public:
 public:
     double getProbBloqueo();
     int getLlegadasTotales();
+    void setIteraciones(int it);
 };
 
 
